@@ -2,7 +2,7 @@ import axios from 'axios'
 import type { ArtworksApiResponse } from './types'
 
 const api = axios.create({
-  baseURL: 'https://api.artic.edu/api/v1',
+  baseURL: import.meta.env.VITE_API_URL,
   timeout: 10000
 })
 

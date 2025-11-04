@@ -14,6 +14,7 @@ export default function ArtworksTable() {
   const [artworks, setArtworks] = useState<Artwork[]>([])
   const [page, setPage] = useState<number>(1)
   const [totalPages, setTotalPages] = useState<number | undefined>(undefined)
+  const [totalRecords, setTotalRecords] = useState<number | undefined>(undefined)
   const [loading, setLoading] = useState<boolean>(false)
 
   const [selectedIds, setSelectedIds] = useState<number[]>([])
@@ -44,6 +45,7 @@ export default function ArtworksTable() {
         setArtworks(data)
         if (res?.pagination) {
           setTotalPages(res.pagination.total_pages ?? undefined)
+          setTotalRecords(res.pagination.total ?? undefined)
         }
         const selectedOnThisPage = data.filter(d => selectedIds.includes(d.id))
         setSelectedRowsOnPage(selectedOnThisPage)
@@ -101,6 +103,10 @@ export default function ArtworksTable() {
 
   const selectionForCurrentPage = artworks.filter(a => selectedIds.includes(a.id))
 
+  const rowsPerPage = 12
+  const firstRecord = artworks.length > 0 ? (page - 1) * rowsPerPage + 1 : 0
+  const lastRecord = artworks.length > 0 ? (page - 1) * rowsPerPage + artworks.length : 0
+
   return (
     <div>
       <Toast ref={toast} />
@@ -142,7 +148,7 @@ export default function ArtworksTable() {
             paginator
             rows={12}
             first={(page - 1) * 12}
-            totalRecords={totalPages ? totalPages * 12 : undefined}
+            totalRecords={totalRecords ?? (totalPages ? totalPages * rowsPerPage : undefined)}
             onPage={onPage}
             lazy
             selectionMode="checkbox"
@@ -150,7 +156,7 @@ export default function ArtworksTable() {
             selection={selectionForCurrentPage}
             onSelectionChange={(e: any) => onSelectionChange(e)}
             emptyMessage={loading ? 'Loading...' : 'No records found'}
-            footer={`Page ${page}${totalPages ? ' of ' + totalPages : ''}`}
+            paginatorLeft={<div className="p-text-left p-paginator-report">{`Showing ${firstRecord} to ${lastRecord} of ${totalRecords ?? '...' } entries`}</div>}
           >
             <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
             <Column field="title" header="Title" sortable></Column>

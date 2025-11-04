@@ -196,3 +196,7 @@ body{
   text-align: center;
   line-height: normal;
 }
+.sp{
+    margin-left: 10px;
+    font-size: 16px;
+}
