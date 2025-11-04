@@ -15,7 +15,6 @@ export default function App() {
         </div>
       </main>
 
-      <footer className="footer">Built with PrimeReact • Responsive layout</footer>
     </div>
   )
 }
