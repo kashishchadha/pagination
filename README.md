@@ -72,6 +72,30 @@ Notes:
 
 ---
 
+
+## 📸 Screenshots
+
+<div align="center">
+
+### 🏠 Table
+<img src="./screenshots/table.png" alt="Homepage" width="800" />
+
+### ✍️ Rows
+<img src="./screenshots/Rows.png" alt="rows" width="800" />
+
+### 📖 Selection
+<img src="./screenshots/selection.png" alt="selection" width="800" />
+
+### 📱 Base
+<img src="./screenshots/bottom.png" alt="base" width="800" />
+
+
+
+
+</div>
+
+---
+
 ## 🚀 Installation
 
 Prerequisites:
