@@ -110,7 +110,7 @@ export default function ArtworksTable() {
           <OverlayPanel ref={overlayRef} id="op" style={{ padding: '1rem', minWidth: '240px' }}>
             <div className="p-fluid">
               <label htmlFor="nInput">Number of rows to select (current page)</label>
-              <InputNumber id="nInput" value={nValue} onValueChange={(e) => setNValue(e.value)} showButtons mode="decimal" min={1} max={artworks.length || 9999} />
+              <InputNumber id="nInput" value={nValue} onValueChange={(e) => setNValue(e.value ?? null)} showButtons mode="decimal" min={1} max={artworks.length || 9999} />
               <div style={{ marginTop: '0.75rem', display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
                 <Button label="Cancel" onClick={() => overlayRef.current?.hide()} className="p-button-text" />
                 <Button label="Select" onClick={() => selectNRows(nValue)} />
