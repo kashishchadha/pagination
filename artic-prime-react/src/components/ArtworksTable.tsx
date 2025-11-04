@@ -106,14 +106,19 @@ export default function ArtworksTable() {
       <Toast ref={toast} />
       <div className="p-grid p-align-center p-justify-between controls">
         <div>
-          <Button label={`Select ${nValue ?? ''} Rows`} icon="pi pi-list" onClick={(e) => overlayRef.current?.toggle(e)} disabled={loading} />
-          <OverlayPanel ref={overlayRef} id="op" style={{ padding: '1rem', minWidth: '240px' }}>
-            <div className="p-fluid">
-              <label htmlFor="nInput">Number of rows to select (current page)</label>
-              <InputNumber id="nInput" value={nValue} onValueChange={(e) => setNValue(e.value ?? null)} showButtons mode="decimal" min={1} max={artworks.length || 9999} />
-              <div style={{ marginTop: '0.75rem', display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
+          <Button label={`Select  Rows`} icon="pi pi-list" onClick={(e) => overlayRef.current?.toggle(e)} disabled={loading} />
+          <OverlayPanel ref={overlayRef} id="op" className="overlay-panel-custom" style={{ minWidth: '320px' }}>
+            <div className="overlay-title">Select Multiple Rows</div>
+            <div className="overlay-subtitle">Enter number of rows to select across all pages</div>
+
+            <div className="overlay-body">
+              <div className="overlay-input-row">
+                <InputNumber id="nInput" value={nValue} onValueChange={(e) => setNValue(e.value ?? null)} showButtons mode="decimal" min={1} max={artworks.length || 9999} className="overlay-input" />
+                <Button label="Select" onClick={() => selectNRows(nValue)} className="overlay-select-btn p-button-primary" />
+              </div>
+
+              <div className="overlay-actions">
                 <Button label="Cancel" onClick={() => overlayRef.current?.hide()} className="p-button-text" />
-                <Button label="Select" onClick={() => selectNRows(nValue)} />
               </div>
             </div>
           </OverlayPanel>

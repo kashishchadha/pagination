@@ -44,7 +44,105 @@ body{
   text-align:center;
   color:#374151;
 }
-/* small responsive tweaks */
 @media (max-width:640px){
   .card{padding:0.5rem}
+}
+
+.overlay-panel-custom {
+  border-radius: 10px !important;
+  padding: 0.75rem !important;
+  box-shadow: 0 10px 30px rgba(15,23,42,0.12) !important;
+}
+.overlay-title{
+  font-weight:600;
+  font-size:1rem;
+  margin-bottom:4px;
+}
+.overlay-subtitle{
+  color:#6b7280;
+  font-size:0.86rem;
+  margin-bottom:0.75rem;
+}
+.overlay-body{
+  display:flex;
+  flex-direction:column;
+}
+.overlay-input-row{
+  display:flex;
+  gap:0.5rem;
+  align-items:center;
+}
+.overlay-input :global(.p-inputnumber){
+  width:120px;
+}
+.overlay-input{ /* for InputNumber root */
+  width:120px;
+}
+.overlay-select-btn.p-button-primary{
+  background-color: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+}
+.overlay-actions{
+  display:flex;
+  justify-content:flex-end;
+  margin-top:0.5rem;
+}
+
+/* Paginator styling to match the screenshot: left report text and right pagination controls */
+.p-paginator .p-paginator-left .p-paginator-report,
+.p-paginator-report {
+  color: #6b7280; /* muted text */
+  font-size: 0.9rem;
+}
+.p-paginator .p-paginator-right {
+  display: flex;
+  gap: 0.5rem;
+}
+.p-paginator .p-paginator .p-paginator-pages .p-paginator-page {
+  border-radius: 8px;
+}
+.p-paginator .p-paginator .p-paginator-page.p-highlight {
+  background-color: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+.p-paginator .p-paginator .p-paginator-first, .p-paginator .p-paginator .p-paginator-last,
+.p-paginator .p-paginator .p-paginator-prev, .p-paginator .p-paginator .p-paginator-next {
+  border-radius: 8px;
+}
+
+.p-datatable table {
+  table-layout: fixed; 
+}
+.p-datatable-tbody > tr > td,
+.p-datatable-tbody > tr > th {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  height: 48px; 
+  line-height: 48px; 
+  vertical-align: middle;
+}
+.p-datatable-thead > tr > th {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.p-datatable .p-cell,
+.p-datatable .p-column-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.p-datatable-tbody > tr > td.p-selection-column,
+.p-datatable-thead > tr > th.p-selection-column {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  width: 3rem !important;
+  text-align: center;
+  line-height: normal;
 }
